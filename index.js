@@ -2,14 +2,7 @@ var Promise = require('bluebird')
 var request = require('got')
 var defaults = require('lodash.defaults')
 
-var utils = {
-  baseUrl: 'http://www.broadbandmap.gov/broadbandmap/broadband/jun2014/',
-
-  buildRequest: function buildRequest (lat, long, type) {
-    return request.get(utils.baseUrl + type + '?latitude=' +
-      lat + '&longitude=' + long + '&format=json')
-  }
-}
+var BASE_URL = 'http://www.broadbandmap.gov/broadbandmap/broadband/jun2014/'
 
 module.exports = function broadbandMap (lat, long, options) {
   options = defaults(options || {}, {
@@ -19,7 +12,7 @@ module.exports = function broadbandMap (lat, long, options) {
   var promises = []
 
   options.types.forEach(function (type) {
-    promises.push(utils.buildRequest(lat, long, type))
+    promises.push(buildRequest(lat, long, type))
   })
 
   return Promise.all(promises)
@@ -34,4 +27,9 @@ module.exports = function broadbandMap (lat, long, options) {
   .catch(function (err) {
     throw err
   })
+}
+
+function buildRequest (lat, long, type) {
+  return request.get(BASE_URL + type + '?latitude=' +
+    lat + '&longitude=' + long + '&format=json')
 }
