@@ -13,15 +13,15 @@ module.exports = function broadbandMap (lat, long, options) {
   return Promise.resolve(options.types).map(sendRequest).map(parseResults)
 
   function sendRequest (type) {
-  	var query = qs.stringify({
-  		latitude: lat,
-  		longitude: long,
-  		format: 'json'
-  	})
+    var query = qs.stringify({
+      latitude: lat,
+      longitude: long,
+      format: 'json'
+    })
     return request.get(BASE_URL + type + '?' + query)
   }
 
   function parseResults (response) {
-  	return JSON.parse(response.body).Results
+    return JSON.parse(response.body).Results
   }
 }
