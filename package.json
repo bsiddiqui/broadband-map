@@ -32,6 +32,7 @@
   "dependencies": {
     "bluebird": "^2.9.34",
     "got": "^4.1.1",
-    "lodash.defaults": "^3.1.2"
+    "querystring": "~0.2.0",
+    "xtend": "^4.0.0"
   }
 }
