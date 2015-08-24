@@ -1,6 +1,7 @@
 var Promise = require('bluebird')
 var request = require('got')
 var extend = require('xtend')
+var qs = require('querystring')
 
 var BASE_URL = 'http://www.broadbandmap.gov/broadbandmap/broadband/jun2014/'
 
@@ -12,8 +13,12 @@ module.exports = function broadbandMap (lat, long, options) {
   return Promise.resolve(options.types).map(sendRequest).map(parseResults)
 
   function sendRequest (type) {
-    return request.get(BASE_URL + type + '?latitude=' +
-      lat + '&longitude=' + long + '&format=json')
+  	var query = qs.stringify({
+  		latitude: lat,
+  		longitude: long,
+  		format: 'json'
+  	})
+    return request.get(BASE_URL + type + '?' + query)
   }
 
   function parseResults (response) {
