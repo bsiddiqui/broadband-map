@@ -20,8 +20,8 @@ module.exports = function broadbandMap (lat, long, options) {
     })
     return request.get(BASE_URL + type + '?' + query)
   }
+}
 
-  function parseResults (response) {
-    return JSON.parse(response.body).Results
-  }
+function parseResults (response) {
+  return JSON.parse(response.body).Results
 }
