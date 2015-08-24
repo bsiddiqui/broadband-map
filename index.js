@@ -24,7 +24,12 @@ module.exports = function broadbandMap (lat, long, options) {
 
   return Promise.all(promises)
   .spread(function (res1, res2) {
-    return [JSON.parse(res1.body).Results, JSON.parse(res2.body).Results]
+    var results = []
+
+    if (res1 && res1.body) results.push(JSON.parse(res1.body).Results)
+    if (res2 && res2.body) results.push(JSON.parse(res2.body).Results)
+
+    return results
   })
   .catch(function (err) {
     throw err
