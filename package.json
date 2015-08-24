@@ -1,0 +1,37 @@
+{
+  "name": "broadband-map",
+  "version": "0.1.0",
+  "description": "node wrapper for broadbandmap.gov",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bsiddiqui/broadband-map.git"
+  },
+  "keywords": [
+    "broadband",
+    "broadband map",
+    "broadband providers",
+    "internet",
+    "internet providers",
+    "map"
+  ],
+  "author": "Basil Siddiqui <basil.siddiqui@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bsiddiqui/broadband-map/issues"
+  },
+  "homepage": "https://github.com/bsiddiqui/broadband-map#readme",
+  "devDependencies": {
+    "code": "^1.5.0",
+    "lab": "^5.15.2",
+    "standard": "^5.1.0"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "got": "^4.1.1",
+    "lodash.defaults": "^3.1.2"
+  }
+}
