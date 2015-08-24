@@ -1,13 +1,13 @@
 var Promise = require('bluebird')
 var request = require('got')
-var defaults = require('lodash.defaults')
+var extend = require('xtend')
 
 var BASE_URL = 'http://www.broadbandmap.gov/broadbandmap/broadband/jun2014/'
 
 module.exports = function broadbandMap (lat, long, options) {
-  options = defaults(options || {}, {
+  options = extend({
     types: ['wireline', 'wireless']
-  })
+  }, options || {})
 
   var promises = []
 
