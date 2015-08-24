@@ -18,9 +18,6 @@ module.exports = function broadbandMap (lat, long, options) {
 
     return results
   })
-  .catch(function (err) {
-    throw err
-  })
 
   function buildRequest (type) {
     return request.get(BASE_URL + type + '?latitude=' +
