@@ -4,7 +4,7 @@
   "description": "node wrapper for broadbandmap.gov",
   "main": "index.js",
   "scripts": {
-    "test": "lab test.js"
+    "test": "standard && lab test.js --verbose --colors --assert code --timeout 50000"
   },
   "repository": {
     "type": "git",
