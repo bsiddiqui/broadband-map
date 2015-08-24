@@ -9,13 +9,7 @@ module.exports = function broadbandMap (lat, long, options) {
     types: ['wireline', 'wireless']
   }, options || {})
 
-  var promises = []
-
-  options.types.forEach(function (type) {
-    promises.push(buildRequest(lat, long, type))
-  })
-
-  return Promise.all(promises)
+  return Promise.map(options.type, buildRequest)
   .spread(function (res1, res2) {
     var results = []
 
@@ -27,9 +21,9 @@ module.exports = function broadbandMap (lat, long, options) {
   .catch(function (err) {
     throw err
   })
-}
 
-function buildRequest (lat, long, type) {
-  return request.get(BASE_URL + type + '?latitude=' +
-    lat + '&longitude=' + long + '&format=json')
+  function buildRequest (type) {
+    return request.get(BASE_URL + type + '?latitude=' +
+      lat + '&longitude=' + long + '&format=json')
+  }
 }
